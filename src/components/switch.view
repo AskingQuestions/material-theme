@@ -1,0 +1,110 @@
+info {
+	"name": "input-switch",
+	"type": "style"
+}
+
+style {
+	@{component} {
+		.input-switch {
+			display: flex;
+			align-items: center;
+			
+			.input-switch-wrap {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+
+				height: calc(var(--base-size) * 1.2);
+				width: calc(var(--base-size) * 3);
+
+				background: var(--mute);
+				border-radius: 1000px;
+
+				transition: var(--transition) var(--transition-easing);
+
+				.input-switch-main {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+
+					.input-switch-handle {
+						display: flex;
+						position: absolute;
+						transition: var(--transition) var(--transition-easing);
+
+						box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+						
+						&.websom-dragging {
+							transition: background-color var(--transition-color) var(--transition-easing);
+							width: calc(var(--base-size) * 1.7);
+
+							&::before {
+								background: rgba(255, 255, 255, 0.25);
+								transform: scale(1);
+							}
+						}
+
+						background: grey;
+						border-radius: 1000px;
+						top: calc(var(--base-size) * -0.25);
+						left: calc(50% - var(--base-size) * 1.0);
+						
+						width: calc(var(--base-size) * 1.7);
+						height: calc(var(--base-size) * 1.7);
+
+						&::before {
+							content: "";
+							border-radius: 50%;
+							width: 40px;
+							height: 40px;
+							left: calc(40px / 4 * -1);
+							top: calc(40px / 4 * -1);
+							background: transparent;
+							position: absolute;
+							transition: .3s;
+							transform: scale(0.4);
+						}
+					}
+				}
+			}
+
+			&.switched-on {
+				.input-switch-wrap {
+					background: var(--color-light);
+
+					.input-switch-main {
+						.input-switch-handle {
+							left: calc(100% - var(--base-size) * 1.7);
+							background: var(--color);
+							width: calc(var(--base-size) * 1.7);
+						}
+					}
+				}
+			}
+
+			&.switched-off {
+				.input-switch-wrap {
+					background: var(--mute);
+
+					.input-switch-main {
+						.input-switch-handle {
+							left: 0;
+							width: calc(var(--base-size) * 1.7);
+						}
+					}
+				}
+			}
+
+			.input-switch-text {
+				margin-left: var(--base-size);
+
+				user-select: none;
+				cursor: normal;
+			}
+		}
+	}
+}
