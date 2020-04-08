@@ -1,0 +1,189 @@
+info {
+	"name": "input-range",
+	"type": "style"
+}
+
+style {
+	@{component} {
+		.input-range.input-range-orientation-horizontal {
+			flex-direction: row;
+
+			.input-range-rail {
+				height: calc(var(--base-size) * 0.3);
+
+				.input-range-gap {
+					left: var(--input-range-gap-start-percentage);
+					width: var(--input-range-gap-size-percentage);
+					height: 100%;
+				}
+
+				.input-range-snap {
+					left: calc(var(--input-range-snap-percentage) - (var(--base-size) / 8));
+					width: calc(var(--base-size) / 4);
+					height: 200%;
+					top: -50%;
+				}
+
+				.input-range-handle {
+					--before-top: 14px;
+					--before-left: 6px;
+					transition: top .3s, transform .3s;
+					width: calc(var(--base-size) * var(--input-range-value-multiply));
+					height: calc(var(--base-size) * 2);
+
+					--x: calc(12 - var(--input-range-value-low-distance));
+					--input-range-left-radius: calc(var(--x) * -100px);
+
+					margin-left: var(--input-range-value-low-margin);
+					margin-right: var(--input-range-value-high-margin);
+					
+					border-bottom-left-radius: var(--input-range-value-low-round);
+					border-top-left-radius: var(--input-range-value-low-round);
+
+					border-bottom-right-radius: var(--input-range-value-high-round);
+					border-top-right-radius: var(--input-range-value-high-round);
+
+					left: calc(var(--input-range-value-percentage) - var(--base-size));
+					top: calc(50% - var(--base-size));
+
+					&.websom-dragging {
+						top: -40px;
+					}
+				}
+			}
+		}
+
+		.input-range.input-range-orientation-vertical {
+			flex-direction: column;
+			height: 100%;
+
+			.input-range-rail {
+				width: calc(var(--base-size) * 0.3);
+				height: 100%;
+				min-height: 50px;
+
+				.input-range-gap {
+					top: var(--input-range-gap-start-percentage);
+					width: 100%;
+					height: var(--input-range-gap-size-percentage);
+				}
+
+				.input-range-snap {
+					top: calc(var(--input-range-snap-percentage) - (var(--base-size) / 8));
+					width: 200%;
+					height: calc(var(--base-size) / 4);
+					left: -50%;
+				}
+
+				.input-range-handle {
+					--before-top: 6px;
+					--before-left: 14px;
+					transition: left .3s, transform .3s;
+					width: calc(var(--base-size) * 2);
+					height: calc(var(--base-size) * var(--input-range-value-multiply));
+
+					margin-top: var(--input-range-value-low-margin);
+					margin-bottom: var(--input-range-value-high-margin);
+					
+					.input-range-value {
+						top: calc(var(--input-range-value-low-margin) * -1);
+					}
+					
+					border-top-left-radius: var(--input-range-value-low-round);
+					border-top-right-radius: var(--input-range-value-low-round);
+
+					border-bottom-left-radius: var(--input-range-value-high-round);
+					border-bottom-right-radius: var(--input-range-value-high-round);
+
+					top: calc(var(--input-range-value-percentage) - var(--base-size));
+					left: calc(var(--base-size) * -0.75);
+
+					&.websom-dragging {
+						left: -40px;
+					}
+				}
+			}
+		}
+
+		.input-range {
+			display: flex;
+
+			align-items: center;
+
+			.input-range-rail {
+				flex: 1;
+
+				position: relative;
+
+				height: calc(var(--base-size) * 0.3);
+				background: var(--mute-overlay);
+
+				.input-range-gap {
+					position: absolute;
+					background: var(--color);
+				}
+
+				.input-range-snap {
+					position: absolute;
+					background: var(--mute);
+				}
+
+				.input-range-handle {
+					background: var(--color);
+					color: var(--contrast);
+					transform: scale(0.7);
+
+					box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+					&::before {
+						content: "";
+						position: absolute;
+						width: 50%;
+						height: 50%;
+						transform: rotate(45deg);
+						left: 25%;
+						top: 25%;
+						background: var(--color);
+						transition: .3s;
+					}
+
+					.input-range-value {
+						opacity: 0;
+						transition: opacity var(--transition) var(--transition-easing);
+
+						position: absolute;
+
+						top: 0;
+						left: 0;
+
+						width: 100%;
+						height: 100%;
+
+						font-size: var(--base-size);
+						text-align: center;
+
+						line-height: calc(var(--base-size) * 2);
+					}
+
+					&.websom-dragging {
+						transform: scale(1);
+						background: var(--color-dark);
+
+						&::before {
+							left: var(--before-left);
+							top: var(--before-top);
+
+							background: var(--color-dark);
+						}
+
+						z-index: 10;
+
+						.input-range-value {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+}
