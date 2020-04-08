@@ -1,0 +1,13 @@
+info {
+	"name": "action-bar",
+	"type": "style"
+}
+
+style {
+	@{component} {
+		.action-bar {
+			border-radius: 2px;
+			overflow: hidden;
+		}
+	}
+}
