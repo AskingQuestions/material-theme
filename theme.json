@@ -1,0 +1,16 @@
+{
+	"name": "material",
+	"description": "Material design theme",
+	"key": "material",
+	"resources": [
+		{
+			"path": "./src/components"
+		},
+		{
+			"path": "./src/effects"
+		},
+		{
+			"path": "./src/styles"
+		}
+	]
+}
