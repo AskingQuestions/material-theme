@@ -1,0 +1,110 @@
+info {
+	"name": "ripple-effect",
+	"type": "effect",
+	"apply": [
+		{
+			"type": "component",
+			"name": "button"
+		},
+		{
+			"type": "element",
+			"selector": ".fat-action"
+		}
+	]
+}
+
+script {
+	export default {
+		event: ["mousedown", "touchstart", "mouseup", "touchend", "mouseleave"],
+		mount(el) {
+			el.classList.add("ripple-container");
+		},
+		activate(el, event) {
+			let create = () => {
+				let rect = el.getBoundingClientRect();
+
+				let cx = event.clientX;
+				let cy = event.clientY;
+
+				if (event.touches) {
+					let touch = event.touches[0] || event.changedTouches[0];
+
+					cx = touch.clientX;
+					cy = touch.clientY;
+				}
+
+				let dx = cx - rect.x;
+				let dy = cy - rect.y;
+
+				el.style.setProperty("--origin-x", dx + "px");
+				el.style.setProperty("--origin-y", dy + "px");
+				el.style.setProperty("--max-size", (rect.width || rect.height) + "px");
+				let node = document.createElement("div");
+				node.classList.add("ripple-effect");
+
+				el.appendChild(node);
+
+				el.classList.add("ripple-container");
+			};
+
+			if (event.type == "mousedown" || event.type == "touchstart" || event.type == "mouseenter") {
+				create();
+			}
+
+			if (event.type == "mouseup" || event.type == "touchend" || event.type == "mouseleave") {
+				if (el.querySelector(".ripple-effect")) {
+					setTimeout(() => {
+						let rpls = el.querySelectorAll(".ripple-effect");
+						for (let rpl of rpls) rpl.classList.add("ripple-fade");
+
+						setTimeout(() => {
+							for (let rpl of rpls) rpl.remove();
+						}, 500);
+					}, 600);
+				}
+			}
+		}
+	}
+}
+
+style {
+	.ripple-container, [data-effect_mounted_ripple_effect] {
+		overflow: hidden;
+		position: relative;
+	}
+	
+	.ripple-effect {
+		position: absolute;
+		transition: .5s;
+
+		pointer-events: none;
+
+		opacity: 1;
+
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 50%;
+		width: var(--max-size);
+		height: var(--max-size);
+
+		top: calc(var(--origin-y) - var(--max-size) / 2);
+		left: calc(var(--origin-x) - var(--max-size) / 2);
+
+		transform: scale(0);
+
+		animation: ripple-effect 1s forwards;
+
+		&.ripple-fade {
+			opacity: 0;
+		}
+	}
+
+	@keyframes ripple-effect {
+		0% {
+			transform: scale(0);
+		}
+
+		100% {
+			transform: scale(2);
+		}
+	}
+}
