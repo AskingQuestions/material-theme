@@ -12,6 +12,44 @@ style {
 		.input-text {
 			height: 44px;
 
+			&.text-search {
+				border-radius: 4px;
+				background: var(--background-tint);
+
+				overflow: hidden;
+
+				.input-text-input {
+					height: 44px !important;
+					padding-left: var(--base-size) !important;
+				}
+
+				.input-text-after {
+					display: flex;
+					align-items: center;
+					height: 100%;
+				}
+
+				.input-text-search-icon {
+					--icon-size: 20px;
+					margin-left: auto;
+					margin-right: var(--base-size);
+				}
+
+				.input-text-placeholder {
+					opacity: 0;
+					transform: scale(1) translate(0) !important;
+					padding-left: var(--base-size);
+					line-height: 44px;
+					top: 0;
+				}
+
+				&:not(:focus-within).placeholder {
+					.input-text-placeholder {
+						opacity: 1;
+					}
+				}
+			}
+
 			&.placeholder {
 				.input-text-placeholder {
 					transform: scale(1) translate(0);
