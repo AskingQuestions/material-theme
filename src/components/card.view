@@ -23,5 +23,17 @@ style {
 				border-bottom-right-radius: 2px;
 			}
 		}
+
+		.rich-view-grid-item-selected > .card {
+			box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		}
+
+		.rich-view-grid-item {
+			transition: transform .3s;
+		}
+
+		.rich-view-grid-item-selected {
+			transform: translate(0, -3px);
+		}
 	}
 }
