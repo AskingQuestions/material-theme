@@ -1,0 +1,18 @@
+info {
+	"name": "navbar",
+	"type": "style"
+}
+
+style {
+	@{component} {
+		.navbar {
+			.nav-item {
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				padding-left: 16px;
+				padding-right: 16px;
+				white-space: nowrap;
+			}
+		}
+	}
+}
