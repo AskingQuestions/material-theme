@@ -132,7 +132,7 @@ style {
 
 				white-space: nowrap;
 
-				color: var(--mute-contrast-blend);
+				color: rgba(127, 127,127, 0.5);
 				transform-origin: left;
 				transform: scale(0.7) translate(0, -26px);
 				top: 8px;
@@ -194,7 +194,7 @@ style {
 
 					&:focus {
 						background: transparent;
-						color: var(--mute-contrast);
+						color: var(--background-contrast);
 						border-bottom-color: var(--underline-color);
 
 						& ~ .input-text-placeholder {
