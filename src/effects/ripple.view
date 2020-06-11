@@ -79,9 +79,9 @@ style {
 
 		pointer-events: none;
 
-		opacity: 1;
+		opacity: 0.3;
 
-		background: rgba(255, 255, 255, 0.3);
+		background: var(--background-contrast);
 		border-radius: 50%;
 		width: var(--max-size);
 		height: var(--max-size);
