@@ -36,7 +36,7 @@ style {
 				}
 
 				.input-text-placeholder {
-					opacity: 0;
+					opacity: 0 !important;
 					transform: scale(1) translate(0) !important;
 					padding-left: var(--base-size);
 					line-height: 44px;
@@ -45,7 +45,7 @@ style {
 
 				&:not(:focus-within).placeholder {
 					.input-text-placeholder {
-						opacity: 1;
+						opacity: 1 !important;
 					}
 				}
 			}
@@ -63,10 +63,10 @@ style {
 				}
 
 				.input-text-wrap {
-					--underline-color: var(--error) !important;
+					--underline-color: var(--danger) !important;
 
 					input {
-						color: unset !important;
+						color: var(--background-contrast) !important;
 						border-bottom-color: var(--underline-color);
 					}
 				}
@@ -86,7 +86,7 @@ style {
 					--underline-color: var(--success) !important;
 					
 					input {
-						color: unset !important;
+						color: var(--background-contrast) !important;
 						border-bottom-color: var(--underline-color);
 					}
 				}
@@ -118,6 +118,7 @@ style {
 					top: 8px;
 					transform-origin: left;
 					transform: scale(0.7) translate(0, -26px);
+					opacity: 1;
 				}
 			}
 
@@ -132,7 +133,8 @@ style {
 
 				white-space: nowrap;
 
-				color: rgba(127, 127,127, 0.5);
+				color: var(--background-contrast);
+				opacity: 0.7;
 				transform-origin: left;
 				transform: scale(0.7) translate(0, -26px);
 				top: 8px;
