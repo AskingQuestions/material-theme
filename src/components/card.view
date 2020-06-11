@@ -24,6 +24,36 @@ style {
 			}
 		}
 
+		.card.card-drop-slide-active {
+			overflow: visible;
+
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+
+			.card-main {
+				z-index: var(--z-above-overlay);
+				position: absolute;
+				background: var(--background-overlay);
+			}
+
+			.card-drop-slide {
+				top: 100%;
+				opacity: 1;
+
+				border: 0;
+				border-radius: 2px;
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				width: 100%;
+				box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+			}
+		}
+
+		.card-drop-slide {
+			box-shadow: 0;
+			transition: top var(--transition-movement) var(--transition-easing-movement), box-shadow var(--transition-movement) var(--transition-easing-movement) var(--transition-movement);
+		}
+
 		.rich-view-grid-item-selected > .card {
 			box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 		}
