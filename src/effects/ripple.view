@@ -38,7 +38,7 @@ script {
 
 				el.style.setProperty("--origin-x", dx + "px");
 				el.style.setProperty("--origin-y", dy + "px");
-				el.style.setProperty("--max-size", (rect.width || rect.height) + "px");
+				el.style.setProperty("--max-size", (Math.max(rect.width, rect.height) * 2) + "px");
 				let node = document.createElement("div");
 				node.classList.add("ripple-effect");
 
