@@ -12,6 +12,7 @@ style {
 
 			text-transform: uppercase;
 			letter-spacing: 2px;
+			--background-contrast: var(--background-contrast);
 
 			transition: var(--transition) var(--transition-easing);
 
